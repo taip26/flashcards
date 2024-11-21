@@ -137,7 +137,7 @@ public class Card {
      * if there is only one front or back, then the card representation is
      * [<FRONT>|] id:<ID> s_id:<SETID> or [|<BACK>] id:<ID> s_id:<SETID>
      *
-     * @return
+     * @return String representation of this Card
      */
     @Override
     public String toString() {
@@ -157,6 +157,11 @@ public class Card {
         return sb.toString();
     }
 
+    /**
+     * Hash Code for this representing this card
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         return 17 * front.hashCode() ^ back.hashCode();
