@@ -29,8 +29,8 @@ public class Main extends Application {
         SQL_Manager.initializeSetsTable(url);
         SQL_Manager.initializeCardsTable(url);
 
-        Set set = new Set(0, "Set");
-        set.addCard(1, "This is the front of the card", "You flipped it :o");
+//        Set set = new Set(0, "Set");
+//        set.addCard(1, "This is the front of the card", "You flipped it :o");
 
 //        SQL_Manager.insertSet(url, "Hi");
 //        SQL_Manager.insertSet(url, "Just Inserted");
@@ -42,8 +42,8 @@ public class Main extends Application {
 //        SQL_Manager.getSetsFromDB(url);
         System.out.println(SQL_Manager.getCardsFromSetID(url,1));
         MainController controller = mainLoader.getController();
-        ArrayList<Set> sets = new ArrayList<>();
-        sets.add(set);
+        ArrayList<Set> sets = SQL_Manager.getSetsFromDB(url);
+        System.out.println(sets);
         controller.initialize(sets);
 
         window = stage;
@@ -52,10 +52,12 @@ public class Main extends Application {
         Scene scene = new Scene(root, 500, 400);
         scene.getStylesheets().add(String.valueOf(getClass().getResource("main.css")));
         VBox leftPane = (VBox) scene.lookup("#sets-pane");
-        Button set1 = new Button("Set 1");
-        Button set2 = new Button("Set 2");
-        Button set3 = new Button("Set 3");
-        leftPane.getChildren().addAll(set1, set2, set3);
+        for (Set set : sets) {
+            System.out.println("CARS");
+            System.out.println(SQL_Manager.getCardsFromSetID(url, set.getId()));
+            set.setCardList(SQL_Manager.getCardsFromSetID(url, set.getId()));
+            leftPane.getChildren().add(new Button(set.getName()));
+        }
         window.setScene(scene);
         window.show();
     }

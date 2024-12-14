@@ -13,8 +13,10 @@ public class MainController {
     private Card currentCard;
 
     public void initialize(ArrayList<Set> sets) {
+        // add db initialization here instead
         this.sets = sets;
         currentSet = sets.get(0); // TODO remember last opened if wanted
+        System.out.println(currentSet.getCardList());
         currentCard = currentSet.getCurrentCard();
         cardText.setText(currentCard.show());
     }

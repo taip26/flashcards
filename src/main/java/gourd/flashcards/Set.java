@@ -1,6 +1,7 @@
 package gourd.flashcards;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -11,7 +12,7 @@ public class Set {
     private String name;
     private int pos; // position of iterator
     private int numCards;
-    private final ArrayList<Card> cards;
+    private ArrayList<Card> cards;
 
     /**
      * Set constructor
@@ -25,6 +26,18 @@ public class Set {
         this.cards = new ArrayList<Card>();
         this.pos = 0;
         this.numCards = 0;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setCardList(ArrayList<Card> cardList) {
+        cards = cardList;
+    }
+
+    public ArrayList<Card> getCardList() {
+        return cards;
     }
 
     /**
