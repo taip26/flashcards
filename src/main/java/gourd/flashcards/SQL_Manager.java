@@ -75,7 +75,7 @@ public class SQL_Manager {
      */
     public static ArrayList<Set> getSetsFromDB(String url) {
         ArrayList<Set> sets = new ArrayList<>();
-
+        System.out.println("Querying sets from database: ");
         var sql = "SELECT * FROM sets";
 
         try (var conn = DriverManager.getConnection(url);
@@ -97,6 +97,7 @@ public class SQL_Manager {
 
     public static ArrayList<Card> getCardsFromSetID(String url, int setID) {
         ArrayList<Card> cards = new ArrayList<>();
+        System.out.println("Querying cards from database with set id " + setID + ": ");
 
         var sql = "SELECT * FROM cards WHERE set_id = ?";
 
@@ -105,9 +106,10 @@ public class SQL_Manager {
                 pstmt.setInt(1, setID);
                 var rs = pstmt.executeQuery();
                 while (rs.next()) {
-                    System.out.printf("%-5s%-25s\n",
+                    System.out.printf("%-5s%-25s%s\n",
                         rs.getInt("id"),
-                        rs.getString("front")
+                        rs.getString("front"),
+                        rs.getString("back")
                     );
                     // create card from database output
                     Card card = new Card(rs.getInt("id"),

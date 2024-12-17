@@ -12,7 +12,7 @@ public class Set {
     private String name;
     private int pos; // position of iterator
     private int numCards;
-    private ArrayList<Card> cards;
+    private List<Card> cards;
 
     /**
      * Set constructor
@@ -32,11 +32,11 @@ public class Set {
         return id;
     }
 
-    public void setCardList(ArrayList<Card> cardList) {
+    public void setCardList(List<Card> cardList) {
         cards = cardList;
     }
 
-    public ArrayList<Card> getCardList() {
+    public List<Card> getCardList() {
         return cards;
     }
 
@@ -126,5 +126,14 @@ public class Set {
     public Card getPrevCard() {
         pos = (pos - 1 + numCards) % numCards;
         return getCurrentCard();
+    }
+
+    /**
+     * Indicates whether this set's card list is empty
+     *
+     * @return True if the card list is empty, false otherwise
+     */
+    public boolean isEmpty() {
+        return cards.isEmpty();
     }
 }

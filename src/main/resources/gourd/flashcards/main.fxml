@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <BorderPane id="borderpane" xmlns:fx="http://javafx.com/fxml" fx:controller="gourd.flashcards.MainController">
     <left>
-        <VBox id="sets-pane" alignment="TOP_CENTER" xmlns:fx="http://javafx.com/fxml">
+        <VBox fx:id="setsPane" alignment="TOP_CENTER" xmlns:fx="http://javafx.com/fxml">
 
         </VBox>
     </left>
