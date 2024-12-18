@@ -34,6 +34,7 @@ public class Set {
 
     public void setCardList(List<Card> cardList) {
         cards = cardList;
+        numCards = cardList.size();
     }
 
     public List<Card> getCardList() {
@@ -113,7 +114,7 @@ public class Set {
      *
      * @return The next card
      */
-    public Card getNextCard() {
+    public Card nextCard() {
         pos = (pos + 1) % numCards;
         return getCurrentCard();
     }
@@ -123,7 +124,7 @@ public class Set {
      *
      * @return The previous card
      */
-    public Card getPrevCard() {
+    public Card prevCard() {
         pos = (pos - 1 + numCards) % numCards;
         return getCurrentCard();
     }

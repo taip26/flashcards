@@ -23,7 +23,7 @@ public class Main extends Application {
     Stage window;
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("main.fxml"));
+        FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("layouts/main.fxml"));
         Parent root = mainLoader.load();
 
         SQL_Manager.initializeDatabase(URL);
@@ -36,7 +36,9 @@ public class Main extends Application {
 //        SQL_Manager.updateCard(URL, 2, "Front of card", "Back of card");
 //        SQL_Manager.updateSetName(URL, 1, "Bruh");
 //        SQL_Manager.deleteCard(URL, 3);
-
+        for (int i = 5; i <= 16; i++) {
+            SQL_Manager.deleteCard(URL, i);
+        }
 //        SQL_Manager.getSetsFromDB(URL);
         MainController controller = mainLoader.getController();
         List<Set> sets = SQL_Manager.getSetsFromDB(URL);
@@ -45,12 +47,8 @@ public class Main extends Application {
         window = stage;
         window.setTitle("Flashcards!");
 
-        Scene scene = new Scene(root, 500, 400);
-        scene.getStylesheets().add(String.valueOf(getClass().getResource("main.css")));
-//        VBox leftPane = (VBox) scene.lookup("#sets-pane");
-//        for (Set set : sets) {
-//            leftPane.getChildren().add(new Button(set.getName()));
-//        }
+        Scene scene = new Scene(root, 700, 500);
+        scene.getStylesheets().add(String.valueOf(getClass().getResource("styles/main.css")));
         window.setScene(scene);
         window.show();
     }

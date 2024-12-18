@@ -28,8 +28,10 @@ public class MainController {
         currentSet = sets.get(0); // TODO remember last opened if wanted
         currentSet.setCardList(SQL_Manager.getCardsFromSetID(URL, currentSet.getId()));
 
+        // Populate set navigation and set onClickListeners
         for (Set set : sets) {
             Button setButton = new Button(set.getName());
+            setButton.getStyleClass().add("setButton");
             setButton.setOnMouseClicked(e -> {
                 currentSet = set;
                 updateView();
@@ -61,5 +63,21 @@ public class MainController {
     @FXML
     protected void onFavoriteClick() {
         cardText.setText("Favorite");
+    }
+
+    @FXML
+    protected void onLeftArrowClick() {
+        if (!currentSet.isEmpty()) {
+            currentSet.prevCard();
+        }
+        updateView();
+    }
+
+    @FXML
+    protected void onRightArrowClick() {
+        if (!currentSet.isEmpty()) {
+            currentSet.nextCard();
+        }
+        updateView();
     }
 }

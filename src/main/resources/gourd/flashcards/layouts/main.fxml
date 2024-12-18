@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.BorderPane?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<BorderPane id="borderpane" xmlns:fx="http://javafx.com/fxml" fx:controller="gourd.flashcards.MainController">
+    <left>
+        <VBox fx:id="setsPane" alignment="TOP_CENTER" xmlns:fx="http://javafx.com/fxml">
+
+        </VBox>
+    </left>
+    <center>
+        <HBox alignment="CENTER">
+            <HBox id="leftArrow" onMouseClicked="#onLeftArrowClick" HBox.hgrow="NEVER" maxHeight="25" maxWidth="25">
+                <ImageView  fitWidth="24" fitHeight="24">
+                    <Image url="@../images/ic_back_arrow.png"/>
+                </ImageView>
+            </HBox>
+            <BorderPane id="card"  xmlns:fx="http://javafx.com/fxml" onMouseClicked="#onCardClick" HBox.hgrow="ALWAYS">
+                <top>
+                    <HBox>
+                        <Button fx:id="edit" text="Edit" onMouseClicked="#onEditClick"/>
+                        <Button fx:id="favorite" text="Favorite" onMouseClicked="#onFavoriteClick"/>
+                    </HBox>
+                </top>
+                <center>
+                    <Label fx:id="cardText" alignment="CENTER">
+                        Card Text
+                    </Label>
+                </center>
+            </BorderPane>
+            <HBox id="rightArrow" onMouseClicked="#onRightArrowClick" HBox.hgrow="NEVER" maxHeight="25" maxWidth="25">
+                <ImageView fitWidth="24" fitHeight="24" >
+                    <Image url="@../images/ic_forward_arrow.png"/>
+                </ImageView>
+            </HBox>
+        </HBox>
+    </center>
+    <bottom>
+        <HBox id="action-pane" alignment="CENTER" xmlns:fx="http://javafx.com/fxml">
+
+
+        </HBox>
+    </bottom>
+</BorderPane>
+
